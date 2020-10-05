@@ -29,6 +29,10 @@ class Player {
     bet(betValue);
   }
 
+  static doBet() {
+    return 4;
+  }
+
   static showdown(gameState) {
   }
 }
