@@ -17,6 +17,7 @@ class Player {
       score: game.me().score()
     });
 
+    console.log("score: ", score);
     console.log("betValue: ", betValue);
     bet(betValue);
   }
