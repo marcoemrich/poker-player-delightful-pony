@@ -13,6 +13,7 @@
   },
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "mob": "git add -A; git commit -m 'WIP'; git push"
   }
 }
