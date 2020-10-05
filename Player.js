@@ -10,8 +10,9 @@ class Player {
     console.log("Game Bet Request");
     console.log(game);
 
-    const raiseLimit = 30;
-    const callLimit = 50;
+    const bigBlind = game.bigBlind();
+    const raiseLimit = bigBlind * 3;
+    const callLimit = bigBlind * 5;
     let betValue;
 
     if (game.toRaise() < raiseLimit) {
