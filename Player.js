@@ -7,22 +7,25 @@ class Player {
 
   static betRequest(gameState, bet) {
     var game = new GameState(gameState);
-    console.log("Hello");
+    console.log("Game Bet Request");
     console.log(game);
 
     const raiseLimit = 30;
     const callLimit = 50;
+    let betValue;
 
     if (game.toRaise() < raiseLimit) {
-      bet(game.toRaise());
+      betValue = game.toRaise();
     } else {
       if (game.toCall() < callLimit) {
-        bet(game.toCall());
+        betValue = game.toCall();
       } else {
-        bet(0);
+        betValue = 0;
       }
     }
 
+    console.log("betValue: ", betValue);
+    bet(betValue);
   }
 
   static showdown(gameState) {
