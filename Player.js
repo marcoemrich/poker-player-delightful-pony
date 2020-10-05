@@ -6,8 +6,8 @@ class Player {
   }
 
   static calcBet({toRaise, toCall, bigBlind, score}) {
-    // const raiseLimit = bigBlind * 3;
-    // const callLimit = bigBlind * 5;
+    const raiseLimit = bigBlind * 3;
+    const callLimit = bigBlind * 5;
 
     console.log("score: ", score);
 
