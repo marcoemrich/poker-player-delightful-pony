@@ -10,27 +10,32 @@ class Player {
     console.log("Game Bet Request");
     console.log(game);
 
-    const bigBlind = game.bigBlind();
-    const raiseLimit = bigBlind * 3;
-    const callLimit = bigBlind * 5;
-    let betValue;
-
-    if (game.toRaise() < raiseLimit) {
-      betValue = game.toRaise();
-    } else {
-      if (game.toCall() < callLimit) {
-        betValue = game.toCall();
-      } else {
-        betValue = 0;
-      }
-    }
+    let betValue = calcBet({
+      toRaise: game.toRaise(),
+      toCall: game.toCall(),
+      bigBlind: game.bigBlind()
+    });
 
     console.log("betValue: ", betValue);
     bet(betValue);
   }
 
   static calcBet({toRaise, toCall, bigBlind}) {
-    return 4;
+    const raiseLimit = bigBlind * 3;
+    const callLimit = bigBlind * 5;
+    let betValue;
+
+    if (toRaise < raiseLimit) {
+      betValue = toRaise;
+    } else {
+      if (toCall < callLimit) {
+        betValue = toCall;
+      } else {
+        betValue = 0;
+      }
+    }
+
+    return betValue;
   }
 
   static showdown(gameState) {

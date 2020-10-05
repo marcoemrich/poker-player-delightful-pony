@@ -5,5 +5,5 @@ test("foo", () => {
     { toRaise: 1,
       toCall: 1,
       bigBlind: 1 }
-  )).toEqual(4);
+  )).toEqual(1);
 });
