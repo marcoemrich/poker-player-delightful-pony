@@ -18,7 +18,7 @@ test("call for medium score", () => {
     { toRaise: 5,
       toCall: 1,
       bigBlind: 7,
-      score: 8
+      score: 7
     }
   )).toEqual(1);
 

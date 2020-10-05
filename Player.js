@@ -10,10 +10,10 @@ class Player {
 
     let betValue;
 
-    if (score > 8) {
+    if (score > 7) {
       betValue = toRaise;
     } else {
-      if (score == 8) {
+      if (score == 7) {
         betValue = toCall;
       } else {
         betValue = 0;
