@@ -8,6 +8,9 @@ class Player {
   static calcBet({toRaise, toCall, bigBlind, score}) {
     // const raiseLimit = bigBlind * 3;
     // const callLimit = bigBlind * 5;
+
+    console.log("score: ", score);
+
     let betValue;
 
     if (score > 8) {
@@ -44,8 +47,6 @@ class Player {
       bigBlind: game.bigBlind(),
       score: game.me().score()
     });
-
-    console.log("score: ", score);
     console.log("betValue: ", betValue);
     bet(betValue);
   }
