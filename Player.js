@@ -13,27 +13,38 @@ class Player {
     let betValue = calcBet({
       toRaise: game.toRaise(),
       toCall: game.toCall(),
-      bigBlind: game.bigBlind()
+      bigBlind: game.bigBlind(),
+      score: game.me().score()
     });
 
     console.log("betValue: ", betValue);
     bet(betValue);
   }
 
-  static calcBet({toRaise, toCall, bigBlind}) {
-    const raiseLimit = bigBlind * 3;
-    const callLimit = bigBlind * 5;
+  static calcBet({toRaise, toCall, bigBlind, score}) {
+    // const raiseLimit = bigBlind * 3;
+    // const callLimit = bigBlind * 5;
     let betValue;
 
-    if (toRaise < raiseLimit) {
+    if (score > 8) {
       betValue = toRaise;
     } else {
-      if (toCall < callLimit) {
+      if (score == 8) {
         betValue = toCall;
       } else {
         betValue = 0;
       }
     }
+
+    // if (toRaise < raiseLimit) {
+    //   betValue = toRaise;
+    // } else {
+    //   if (toCall < callLimit) {
+    //     betValue = toCall;
+    //   } else {
+    //     betValue = 0;
+    //   }
+    // }
 
     return betValue;
   }
