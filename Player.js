@@ -5,10 +5,7 @@ class Player {
     return '0.1';
   }
 
-  static calcBet({toRaise, toCall, bigBlind, score}) {
-    const raiseLimit = bigBlind * 3;
-    const callLimit = bigBlind * 5;
-
+  static calcBet({ toRaise, toCall, bigBlind, score }) {
     console.log("score: ", score);
 
     let betValue;
@@ -22,6 +19,14 @@ class Player {
         betValue = 0;
       }
     }
+
+    return betValue;
+  }
+
+  static oldCalc({ toRaise, toCall, bigBlind, score }) {
+    let betValue;
+    const raiseLimit = bigBlind * 3;
+    const callLimit = bigBlind * 5;
 
     if (toRaise < raiseLimit) {
       betValue = toRaise;
@@ -38,17 +43,29 @@ class Player {
 
   static betRequest(gameState, bet) {
     var game = new GameState(gameState);
-    console.log("Game Bet Request");
-    console.log(game);
 
-    let betValue = Player.calcBet({
-      toRaise: game.toRaise(),
-      toCall: game.toCall(),
-      bigBlind: game.bigBlind(),
-      score: 10//game.me().score()
-    });
-    console.log("betValue: ", betValue);
-    bet(betValue);
+    try {
+      console.log("Game Bet Request");
+      console.log("game", game);
+      console.log("me", game.me());
+
+      let betValue = Player.calcBet({
+        toRaise: game.toRaise(),
+        toCall: game.toCall(),
+        bigBlind: game.bigBlind(),
+        score: game.me().score()
+      });
+      console.log("betValue: ", betValue);
+      bet(betValue);
+    } catch (e) {
+      console.log(e);
+      bet(Player.oldCalc({
+        toRaise: game.toRaise(),
+        toCall: game.toCall(),
+        bigBlind: game.bigBlind(),
+        score: 10
+      }));
+    }
   }
 
 

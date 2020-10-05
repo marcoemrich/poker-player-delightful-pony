@@ -10,6 +10,10 @@ test('Selects current player correctly', () => {
   expect(buildGameStateWithDefaults({}).me().name()).toBe("Bob");
 });
 
+test('score foo', () => {
+  expect(buildGameStateWithDefaults({}).me().score()).toBe(3);
+});
+
 
 test('Minimum call value calculated correctly', () => {
   expect(buildGameStateWithDefaults({}).toCall()).toBe(240);
@@ -74,19 +78,19 @@ test('Rank counts', () => {
 
 test('Betting round', () => {
   const cards = defaultGameState.community_cards;
-  
+
   expect(buildGameStateWithDefaults({
     "community_cards": []
   }).bettingRound()).toBe("pre flop");
-  
+
   expect(buildGameStateWithDefaults({
     "community_cards": cards.slice(0,3)
   }).bettingRound()).toBe("flop");
-  
+
   expect(buildGameStateWithDefaults({
     "community_cards": cards.slice(0,4)
   }).bettingRound()).toBe("turn");
-  
+
   expect(buildGameStateWithDefaults({
     "community_cards": cards
   }).bettingRound()).toBe("river");
@@ -98,12 +102,12 @@ test('Betting position', () => {
     "dealer": 2,
     "in_action": 0
   }).bettingPosition()).toBe(1);
-  
+
   expect(buildGameStateWithDefaults({
     "dealer": 2,
     "in_action": 1
   }).bettingPosition()).toBe(2);
-  
+
   expect(buildGameStateWithDefaults({
     "dealer": 0,
     "in_action": 1
@@ -114,9 +118,9 @@ test('Active players in game', () => {
   expect(buildGameStateWithDefaults({
     "players": []
   }).activePlayersInGame()).toEqual([])
-  
+
   expect(buildGameStateWithDefaults({
-    "players": [      
+    "players": [
       {
           "id": 0,
           "status": "active",
@@ -127,10 +131,10 @@ test('Active players in game', () => {
           "id": 0,
           "status": "active",
       })
-  ])  
-  
+  ])
+
   expect(buildGameStateWithDefaults({
-    "players": [      
+    "players": [
       {
           "id": 0,
           "status": "folded",
@@ -142,16 +146,16 @@ test('Active players in game', () => {
           "status": "folded",
       })
   ])
-  
+
   expect(buildGameStateWithDefaults({
-    "players": [      
+    "players": [
       {
           "id": 0,
           "status": "out",
       }
     ]
   }).activePlayersInGame()).toEqual([])
-  
+
 });
 
 
@@ -159,9 +163,9 @@ test('Active players in hand', () => {
   expect(buildGameStateWithDefaults({
     "players": []
   }).activePlayersInHand()).toEqual([])
-  
+
   expect(buildGameStateWithDefaults({
-    "players": [      
+    "players": [
       {
           "id": 0,
           "status": "active",
@@ -172,24 +176,24 @@ test('Active players in hand', () => {
           "id": 0,
           "status": "active",
       })
-  ])  
-  
+  ])
+
   expect(buildGameStateWithDefaults({
-    "players": [      
+    "players": [
       {
           "id": 0,
           "status": "folded",
       }
     ]
   }).activePlayersInHand()).toEqual([])
-  
+
   expect(buildGameStateWithDefaults({
-    "players": [      
+    "players": [
       {
           "id": 0,
           "status": "out",
       }
     ]
   }).activePlayersInHand()).toEqual([])
-  
+
 });
