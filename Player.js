@@ -7,6 +7,8 @@ class Player {
 
   static betRequest(gameState, bet) {
     var game = new GameState(gameState);
+    console.log("Hello");
+    console.log(game);
     bet(5);
   }
 
