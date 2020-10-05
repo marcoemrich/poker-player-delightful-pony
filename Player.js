@@ -23,15 +23,15 @@ class Player {
       }
     }
 
-    // if (toRaise < raiseLimit) {
-    //   betValue = toRaise;
-    // } else {
-    //   if (toCall < callLimit) {
-    //     betValue = toCall;
-    //   } else {
-    //     betValue = 0;
-    //   }
-    // }
+    if (toRaise < raiseLimit) {
+      betValue = toRaise;
+    } else {
+      if (toCall < callLimit) {
+        betValue = toCall;
+      } else {
+        betValue = 0;
+      }
+    }
 
     return betValue;
   }
@@ -45,7 +45,7 @@ class Player {
       toRaise: game.toRaise(),
       toCall: game.toCall(),
       bigBlind: game.bigBlind(),
-      score: game.me().score()
+      score: 10//game.me().score()
     });
     console.log("betValue: ", betValue);
     bet(betValue);
