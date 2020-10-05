@@ -7,7 +7,7 @@ class Player {
 
   static betRequest(gameState, bet) {
     var game = new GameState(gameState);
-    bet(0);
+    bet(5);
   }
 
   static showdown(gameState) {
