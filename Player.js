@@ -29,7 +29,7 @@ class Player {
     bet(betValue);
   }
 
-  static doBet() {
+  static calcBet({toRaise, toCall, bigBlind}) {
     return 4;
   }
 

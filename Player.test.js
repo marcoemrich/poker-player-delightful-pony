@@ -1,5 +1,9 @@
 const Player = require("./Player.js")
 
 test("foo", () => {
-  expect(Player.doBet()).toEqual(4);
+  expect(Player.calcBet(
+    { toRaise: 1,
+      toCall: 1,
+      bigBlind: 1 }
+  )).toEqual(4);
 });
